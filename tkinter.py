@@ -27,10 +27,10 @@ buttons = [
 ]
 
 for (text, row, col) in buttons:
-    if text == 'Quit':
-        button = tk.Button(root, text=text, command=root.quit, bg='red')
-    elif text == 'Clear':
+    if text == 'Clear':
         button = tk.Button(root, text=text, command=clear_text, bg='red')
+    elif text in ['Quit', 'Visualize', 'About']:
+        button = tk.Button(root, text=text, command=lambda: None, bg='red')
     else:
         button = tk.Button(root, text=text, command=lambda t=text: append_text(t), bg='brown')
     button.grid(row=row, column=col, sticky='nsew', padx=5, pady=5)
