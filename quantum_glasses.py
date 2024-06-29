@@ -1,3 +1,5 @@
+#this doesn't use qiskit
+#very crude but can be worked on
 import os
 import tkinter as tk
 from tkinter import *
