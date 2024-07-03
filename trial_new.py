@@ -1,5 +1,5 @@
 #two-qubit gate at line 219
-#to be tested
+#to be tested.
 import os
 from platform import system
 import tkinter as tk
