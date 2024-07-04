@@ -143,6 +143,45 @@ class QuantumVisualizer:
             print(e)
             self.visualization_window.destroy()
 
+    def process_gates(self, gates):
+        for gate in gates:
+            gate = gate.strip().lower()
+            if gate == 'x':
+                circuit.x(0)
+                self.visualize(circuit)
+            elif gate == 'y':
+                circuit.y(0)
+                self.visualize(circuit)
+            elif gate == 'z':
+                circuit.z(0)
+                self.visualize(circuit)
+            elif gate == 'rx':
+                self.get_theta(circuit, 'x')
+                self.visualize(circuit)
+            elif gate == 'ry':
+                self.get_theta(circuit, 'y')
+                self.visualize(circuit)
+            elif gate == 'rz':
+                self.get_theta(circuit, 'z')
+                self.visualize(circuit)
+            elif gate == 's':
+                circuit.s(0)
+                self.visualize(circuit)
+            elif gate == 'sd':
+                circuit.sdg(0)
+                self.visualize(circuit)
+            elif gate == 'h':
+                circuit.h(0)
+                self.visualize(circuit)
+            elif gate == 't':
+                circuit.t(0)
+                self.visualize(circuit)
+            elif gate == 'td':
+                circuit.tdg(0)
+                self.visualize(circuit)
+            else:
+                print(f"Unknown gate: {gate}")
+
     def main(self, testing=False):
         """Main application function."""
         try:
@@ -164,8 +203,8 @@ class QuantumVisualizer:
             display.pack(padx=3, pady=4)
 
             def update_display(gate):
-                display.insert(END, gate)
-                if len(display.get()) == 10:
+                display.insert(END, gate + ',')
+                if len(display.get()) >= 10:
                     for btn in buttons:
                         btn.config(state=DISABLED)
 
@@ -173,9 +212,9 @@ class QuantumVisualizer:
                 ('X', 'x', lambda: circuit.x(0)),
                 ('Y', 'y', lambda: circuit.y(0)),
                 ('Z', 'z', lambda: circuit.z(0)),
-                ('RX', 'Rx', lambda: self.get_theta(circuit, 'x')),
-                ('RY', 'Ry', lambda: self.get_theta(circuit, 'y')),
-                ('RZ', 'Rz', lambda: self.get_theta(circuit, 'z')),
+                ('RX', 'Rx', lambda: update_display('rx')),
+                ('RY', 'Ry', lambda: update_display('ry')),
+                ('RZ', 'Rz', lambda: update_display('rz')),
                 ('S', 's', lambda: circuit.s(0)),
                 ('SD', 'sd', lambda: circuit.sdg(0)),
                 ('H', 'H', lambda: circuit.h(0)),
@@ -197,7 +236,7 @@ class QuantumVisualizer:
 
             special_buttons = [
                 ('Quit', root.destroy),
-                ('Visualize', lambda: self.visualize(circuit)),
+                ('Visualize', lambda: self.process_gates(display.get().split(','))),
                 ('Clear', lambda: clear_display(circuit)),
                 ('About', self.show_about)
             ]
