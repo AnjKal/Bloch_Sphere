@@ -152,8 +152,8 @@ class QuantumVisualizer:
             root = tk.Tk()
             root.title('Quantum Visualizer')
             current_dir = os.path.dirname(os.path.abspath(__file__))
-            if system() == 'Windows':
-                root.iconbitmap(default=os.path.join(current_dir, "../logo.ico"))
+            # if system() == 'Windows':
+            #     root.iconbitmap(default=os.path.join(current_dir, "../logo.ico"))
 
             root.geometry('420x420')
             root.resizable(0, 0)
