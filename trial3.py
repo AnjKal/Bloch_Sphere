@@ -156,7 +156,7 @@ class QuantumVisualizer:
             end_button.on_clicked(close_vis)
 
         except Exception as e:
-            print(e,"Ididit")
+            print(e)
             self.visualization_window.destroy()
 
     def main(self, testing=False):
