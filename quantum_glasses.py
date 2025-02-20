@@ -1,4 +1,4 @@
-#without qiskit
+#without qiskit functions
 import os
 import tkinter as tk
 from tkinter import *
