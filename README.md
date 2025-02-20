@@ -1,4 +1,4 @@
-# Quantum Visualizer
+# Quantum Visualizer with QIskit functions
 
 A graphical application that allows users to apply quantum gates to a single qubit and visualize the resulting quantum state on a **Bloch sphere** using Qiskit and Tkinter.
 
