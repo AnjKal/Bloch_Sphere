@@ -1,5 +1,4 @@
-#this doesn't use qiskit
-#very crude but can be worked on
+#without qiskit
 import os
 import tkinter as tk
 from tkinter import *
