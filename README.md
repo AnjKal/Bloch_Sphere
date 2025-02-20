@@ -1,4 +1,4 @@
-# Quantum Visualizer with QIskit functions
+# Quantum Visualizer with Qiskit functions
 
 A graphical application that allows users to apply quantum gates to a single qubit and visualize the resulting quantum state on a **Bloch sphere** using Qiskit and Tkinter.
 
@@ -55,10 +55,63 @@ python quantum_visualizer.py
 | **Sd** | Rotation about Z-axis by -PI/2 |
 | **Td** | Rotation about Z-axis by -PI/4 |
 
-## Potential Enhancements
-- Add support for **multi-qubit circuits**.
-- Implement an **undo last operation** feature.
-- Display **probability distributions** for measurement outcomes.
+
+# Quantum Visualizer without Qiskit functions
+
+## Overview
+Quantum Visualizer is a Python-based application designed to help users understand single-qubit rotations on the Bloch Sphere. This application provides an intuitive graphical user interface (GUI) for applying quantum gates and visualizing their effects on a qubit's state.
+
+## Features
+- **Single-Qubit Quantum Circuit:** Simulates a qubit's state and applies quantum gates without using Qiskit.
+- **Gate Operations:** Supports common quantum gates like X, Y, Z, H, S, T, and their inverse counterparts.
+- **Rotation Gates:** Allows users to apply rotation gates (Rx, Ry, Rz) with user-defined angles.
+- **Bloch Sphere Visualization:** Displays the qubit's state evolution on the Bloch sphere.
+- **Interactive GUI:** Provides an easy-to-use interface using Tkinter.
+- **Measurement:** Simulates quantum measurement to observe final probabilities.
+
+## Dependencies
+This project requires the following Python libraries:
+- `numpy`
+- `matplotlib`
+- `tkinter`
+
+Ensure these dependencies are installed using:
+```bash
+pip install numpy matplotlib
+```
+
+## How to Run
+1. Clone this repository or download the source code.
+2. Navigate to the project directory.
+3. Run the following command:
+```bash
+python quantum_visualizer.py
+```
+
+## Usage
+- Click gate buttons (H, X, Y, Z, etc.) to apply operations to the qubit.
+- For rotation gates (Rx, Ry, Rz), select the desired angle from the prompt.
+- Click "Visualize" to see the updated Bloch sphere representation.
+- Use the "Measure" button to simulate quantum measurement.
+- Access "About" for a summary of gate functions.
+
+## Gate Functions
+| Gate | Function |
+|------|----------|
+| X | Flips the qubit state |
+| Y | Rotates state around Y-axis |
+| Z | Applies phase flip |
+| H | Creates superposition |
+| S | Z-rotation by π/2 |
+| T | Z-rotation by π/4 |
+| Rx | X-axis rotation |
+| Ry | Y-axis rotation |
+| Rz | Z-axis rotation |
+
+## Known Limitations
+- Only supports a single qubit.
+- Maximum of ten operations per visualization.
+- If visualization fails, the application will close automatically.
 
 ## License
 This project is licensed under the MIT License.
