@@ -17,6 +17,11 @@ A graphical application that allows users to apply quantum gates to a single qub
   - **Visualize Button:** Displays the Bloch sphere.
   - **About Button:** Shows gate descriptions.
   - **Quit Button:** Exits the application.
+ 
+### Demo
+![Alt text](image-url)
+![Alt text](image-url)
+![Alt text](image-url)
 
 ## Installation
 ### Prerequisites
@@ -59,7 +64,11 @@ python quantum_visualizer.py
 # Quantum Visualizer without Qiskit functions
 
 ## Overview
-Quantum Visualizer is a Python-based application designed to help users understand single-qubit rotations on the Bloch Sphere. This application provides an intuitive graphical user interface (GUI) for applying quantum gates and visualizing their effects on a qubit's state.
+This is a Python-based application that helps to visualize single qubit rotations without packages from the Qiskit library, using only Matplotlib
+
+### Demo
+![Alt text](image-url)
+![Alt text](image-url)
 
 ## Features
 - **Single-Qubit Quantum Circuit:** Simulates a qubit's state and applies quantum gates without using Qiskit.
@@ -96,17 +105,7 @@ python quantum_visualizer.py
 - Access "About" for a summary of gate functions.
 
 ## Gate Functions
-| Gate | Function |
-|------|----------|
-| X | Flips the qubit state |
-| Y | Rotates state around Y-axis |
-| Z | Applies phase flip |
-| H | Creates superposition |
-| S | Z-rotation by π/2 |
-| T | Z-rotation by π/4 |
-| Rx | X-axis rotation |
-| Ry | Y-axis rotation |
-| Rz | Z-axis rotation |
+All the gates in the version with Qiskit functions are supported
 
 ## Known Limitations
 - Only supports a single qubit.
