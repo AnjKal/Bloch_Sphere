@@ -1,9 +1,8 @@
 import os
-#import tkinter as tkkk
 from platform import system
-import tkinter as tk
-from tkinter import *
 import warnings
+import tkinter as tk
+from tkinter import END, LEFT
 import numpy as np
 from qiskit import QuantumCircuit, transpile
 from qiskit_aer import AerSimulator
@@ -16,12 +15,25 @@ from matplotlib.widgets import Button
 warnings.simplefilter("ignore")
 
 # Setup the quantum circuit
-def setup_circuit():
+def setup_circuit(initial_state="0"):
     global circuit, simulator
-    circuit = QuantumCircuit(1)
+    circuit = QuantumCircuit(2)
     simulator = AerSimulator()
 
-setup_circuit()
+    if initial_state == "1":
+        circuit.x(0)
+    elif initial_state == "+":
+        circuit.h(0)
+    elif initial_state == "-":
+        circuit.h(0)
+        circuit.z(0)
+    elif initial_state == "custom":
+        theta = np.pi / 4  # Example value for a custom state
+        circuit.ry(theta, 0)
+    # Add more initial states as needed
+
+setup_circuit(initial_state="1")  # Example to set the initial state to |1>
+
 
 theta = 0
 
@@ -70,6 +82,9 @@ class QuantumVisualizer:
         H: creates superposition - circuit.h()
 
         Allowed range for theta (rotation_angle) in the app is [-2*PI, 2*PI]
+
+        If visualization fails, the app closes automatically.
+        Only ten operations can be visualized at a time.
         """
         text_widget.insert(END, info_text)
 
@@ -150,8 +165,8 @@ class QuantumVisualizer:
             root = tk.Tk()
             root.title('Quantum Visualizer')
             current_dir = os.path.dirname(os.path.abspath(__file__))
-            # if system() == 'Windows':
-            #     root.iconbitmap(default=os.path.join(current_dir, "../logo.ico"))
+            if system() == 'Windows':
+                root.iconbitmap(default=os.path.join(current_dir, "../logo.ico"))
 
             root.geometry('420x420')
             root.resizable(0, 0)
@@ -168,7 +183,7 @@ class QuantumVisualizer:
                 display.insert(END, gate)
                 if len(display.get()) == 10:
                     for btn in buttons:
-                        btn.config(state=DISABLED)
+                        btn.config(state=tk.DISABLED)
 
             buttons = [
                 ('X', 'x', lambda: circuit.x(0)),
@@ -194,7 +209,7 @@ class QuantumVisualizer:
                 display.delete(0, END)
                 setup_circuit()
                 for btn in buttons:
-                    btn.config(state=NORMAL)
+                    btn.config(state=tk.NORMAL)
 
             special_buttons = [
                 ('Quit', root.destroy),
